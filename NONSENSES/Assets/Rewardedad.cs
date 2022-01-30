@@ -9,7 +9,7 @@ public class Rewardedad : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId;
 
-    public GameManager gameManager;
+   
 
 
 
@@ -21,8 +21,8 @@ public class Rewardedad : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     }
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
+
         LoadAd();
     }
 
@@ -68,7 +68,7 @@ public class Rewardedad : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
             // Grant a reward.
             //start theme czyli muzyka start
             FindObjectOfType<AudioManager>().UnPause("Theme");
-            gameManager.NewLive();
+            FindObjectOfType<GameManager>().NewLive();
             // Load another ad:
             Advertisement.Load(_adUnitId, this);
            

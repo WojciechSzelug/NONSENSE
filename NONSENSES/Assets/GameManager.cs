@@ -251,7 +251,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("niesmiertelny");
         player.GetComponent<PolygonCollider2D>().enabled = false;
-       yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5);
         player.GetComponent<PolygonCollider2D>().enabled = true;
         Debug.Log("smiertelny");
 
