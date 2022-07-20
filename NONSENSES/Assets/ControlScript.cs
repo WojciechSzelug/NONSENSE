@@ -7,51 +7,34 @@ public class ControlScript : MonoBehaviour
 
     public GameManager gameManager;
     public float velocityOfPlayer;
-    public float maxSpeed;
+    public float moveSpeed;
     public Rigidbody2D rigidbody2D;
 
-    
+    public float lerpTime = 1f;
+    private float currentLerpTime;
+
     public virtual void OnStart()
     {
-       gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        currentLerpTime = 0;
 
     }
     void FixedUpdate()
     {
-
-        if (Input.touchCount == 0)
+        if (!gameManager.pause)
         {
-
-        }
-        else if ( Input.touchCount == 1)
-        {
-            if (!gameManager.pause)
+            if (Input.touchCount == 0)
             {
-                Touch _touch = Input.GetTouch(0);
-                Vector3 _touchPosition = Camera.main.ScreenToWorldPoint(_touch.position);
-               /*
-                touchPosition.z = 0f; 
-                touchPosition.y = transform.position.y;
-                transform.position = new Vector3(touchPosition.x,0 ,0);
-               
-                */
-                if (_touchPosition.x>0)
-                {
-                    Vector2 _force = new Vector2(1 * velocityOfPlayer , 0)*Time.deltaTime;
-                    if (rigidbody2D.velocity.x < maxSpeed)
-                        rigidbody2D.AddForce(_force);
-                    print("Mouse moved right");
-                }
-                if (_touchPosition.x < 0)
-                {
-                     
-                    Vector2 _force = new Vector2(-1 * velocityOfPlayer , 0) * Time.deltaTime;
-                    if (rigidbody2D.velocity.x > -1*maxSpeed)
-                        rigidbody2D.AddForce(_force);
+                // if no touch just reset
+                currentLerpTime = 0f;
+            }
+            else if (Input.touchCount == 1)
+            {
 
-                    print("Mouse moved left");
-                }
+                Touch _touch = Input.GetTouch(0);
+                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(_touch.position);
+                transform.position = new Vector2(Mathf.Lerp(transform.position.x, touchPosition.x, moveSpeed), transform.position.y);
+
             }
 
         }
