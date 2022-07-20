@@ -13,7 +13,7 @@ public class points : MonoBehaviour
 
     private Vector3 _positionOffset;
     private Quaternion _rotationOffset;
-
+    private Vector3 _down;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class points : MonoBehaviour
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-
+        _down = new Vector3(0, 1, 0);
 
         if (FakeParent != null)
         {
@@ -42,17 +42,17 @@ public class points : MonoBehaviour
             }
             else
             {
-                var targetPos = FakeParent.position - _positionOffset;
+                Vector3 targetPos = (FakeParent.position - _positionOffset);
                 var targetRot = FakeParent.localRotation * _rotationOffset;
-
-                transform.position = RotatePointAroundPivot(targetPos, FakeParent.position, targetRot);
-                transform.localRotation = targetRot;
+                targetPos = new Vector3(transform.position.x, targetPos.y, transform.position.z);
+                transform.position = targetPos; //RotatePointAroundPivot(targetPos, FakeParent.position, targetRot);
+               // transform.localRotation = targetRot;
             }
         }
         if (transform.position.y < -10f || FakeParent == null)
         {
 
-            gameManager.DestroyPoint(gameObject);
+            gameManager.stage.DestroyPoint(gameObject);
 
         }
     }
@@ -78,7 +78,7 @@ public class points : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("Point");
             gameManager.AddPoint(1);
-            gameManager.DestroyPoint(gameObject);
+            gameManager.stage.DestroyPoint(gameObject);
         }
 
     }
@@ -88,7 +88,7 @@ public class points : MonoBehaviour
         //Get a direction from the pivot to the point
         Vector3 dir = point - pivot;
         //Rotate vector around pivot
-        dir = rotation * dir;
+       dir = rotation * dir;
         //Calc the rotated vector
         point = dir + pivot;
         //Return calculated vector

@@ -32,7 +32,7 @@ namespace Assets
             transform.position += Vector3.down * speed * Time.deltaTime;
             if (transform.position.y < -10f)
             {
-                gameManager.DestroyObstacle(gameObject);
+                gameManager.stage.DestroyObstacle(gameObject);
 
             }
 

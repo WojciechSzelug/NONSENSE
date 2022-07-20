@@ -32,6 +32,9 @@ public class MoveTunnel : AbstractObstracle
     {
         if (!gameManager.pause)
         {
+
+            OnFixedUpdate();
+            /*
             //x to czas nie prêdkoœæ
             //zapisz czas podczas tworzenia obiektu fixedTime i odejmij go od fixedTime 
             double x = Time.fixedTime - timeOfCreate;
@@ -40,9 +43,10 @@ public class MoveTunnel : AbstractObstracle
             transform.position += Vector3.down * trueSpeed * Time.deltaTime;
             if (transform.position.y < -6f)
             {
-                gameManager.DestroyObstacle(gameObject);
-
+                gameManager.stage.DestroyObstacle(gameObject);
             }
+            */
+            
         }
     }
 }
