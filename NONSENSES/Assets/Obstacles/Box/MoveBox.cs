@@ -20,9 +20,9 @@ public class MoveBox : AbstractObstracle
     }
     private void FixedUpdate()
     {
-        if (!gameManager.pause)
-        {
+      //  if (!gameManager.pause)
+       // {
             OnFixedUpdate();
-        }
+       // }
     }
 }

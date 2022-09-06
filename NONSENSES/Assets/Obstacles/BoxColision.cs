@@ -16,9 +16,10 @@ public class BoxColision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("colision :"+collision.gameObject.name+"with :"+gameObject.name);
+        Debug.Log("colision :"+collision.gameObject.name+"with :"+gameObject.name);
         if (collision.gameObject.tag == "Player")
         {
+            
             Debug.Log("colision");
             gameManager.EndGame();
         } 
