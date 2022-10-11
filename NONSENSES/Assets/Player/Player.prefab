@@ -5036,12 +5036,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5001746374378085594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f16f56855a36270489f797993c5affed, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a19591b9314dbf47b201772bdac0c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animatorPlayer: {fileID: 3376778120451440047}
   collider: {fileID: 5001746374378085597}
-  animatorShield: {fileID: 0}
 --- !u!50 &5001746374378085598
 Rigidbody2D:
   serializedVersion: 4
@@ -5151,7 +5150,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 194e3a49ee971a34b983aa3f4b159ae1, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

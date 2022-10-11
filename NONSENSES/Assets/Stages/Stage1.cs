@@ -127,7 +127,7 @@ public class Stage1 : AbstractStages
     public void SpawnPotion(GameObject gObject)
     {
         //pozycjonuje punkt  zaraz po dodaniu przeszkody
-        // niech robi to klasa w obiekcie punkt 
+         
         //klasa pozycjonuj¹ca przeszkodê powinna posiadaæ te¿ informacje o wolnej przestrzeni dla punku
 
         List<Przestrzen> wolnaPrzestrzen = new List<Przestrzen>();
@@ -142,14 +142,14 @@ public class Stage1 : AbstractStages
                 return p.stan == false;
             }
             );
-        wolnaPrzestrzen = wolnaPrzestrzen.Where(przestrzen => przestrzen.Distacne() > widthPoint).ToList();
+        wolnaPrzestrzen = wolnaPrzestrzen.Where(przestrzen => przestrzen.Distacne() > widthPoint*2.5f).ToList();
 
         int rnd = Random.Range(0, wolnaPrzestrzen.Count);
         float leftEdgeX = wolnaPrzestrzen[rnd].left;
         float rightEdgeX = wolnaPrzestrzen[rnd].right;
         //krawêdzie musz¹ uwzglêdniaæ szerokoœæ punktu
-        leftEdgeX = leftEdgeX + Math.Abs(widthPoint / 2);
-        rightEdgeX = rightEdgeX - Math.Abs(widthPoint / 2);
+        leftEdgeX = leftEdgeX + Math.Abs(widthPoint );
+        rightEdgeX = rightEdgeX - Math.Abs(widthPoint );
 
         float rand = Random.Range(leftEdgeX, rightEdgeX);
 

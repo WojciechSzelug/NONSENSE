@@ -21,17 +21,15 @@ public class Rewardedad : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     }
     void Start()
     {
-        
-
         LoadAd();
     }
 
     // Load content to the Ad Unit:
     public void LoadAd()
     {
-
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
         Debug.Log("Loading Ad: " + _adUnitId);
+        FindObjectOfType<GameManager>().ADLoaded = false;
         Advertisement.Load(_adUnitId, this);
     }
 
@@ -39,11 +37,13 @@ public class Rewardedad : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         Debug.Log("Ad Loaded: " + adUnitId);
-
+        FindObjectOfType<GameManager>().ADLoaded = true;
         if (adUnitId.Equals(_adUnitId))
         {
             // Configure the button to call the ShowAd() method when clicked:
-            _showAdButton.onClick.AddListener(ShowAd);
+           
+                _showAdButton.onClick.AddListener(ShowAd);
+            
             // Enable the button for users to click:
            // _showAdButton.interactable = true;
         }
@@ -71,8 +71,6 @@ public class Rewardedad : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
             FindObjectOfType<GameManager>().NewLive();
             // Load another ad:
             Advertisement.Load(_adUnitId, this);
-           
-
 
         }
     }

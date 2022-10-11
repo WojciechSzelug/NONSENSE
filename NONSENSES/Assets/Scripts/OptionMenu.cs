@@ -6,7 +6,7 @@ public class OptionMenu : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject mainMenu;
-
+    public GameObject credits;
 
     void Update()
     {
@@ -18,5 +18,12 @@ public class OptionMenu : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Buttom");
         mainMenu.SetActive(true);
         gameObject.SetActive(false);
+    }
+    public void Credits()
+    {
+        FindObjectOfType<AudioManager>().Play("Buttom");
+        
+        gameObject.SetActive(false);
+        credits.SetActive(true);
     }
 }

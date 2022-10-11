@@ -50,10 +50,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -92,6 +94,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -352,9 +355,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Galaxy Coin1-Sheet_3: 7775305332427043266
+      Galaxy Coin1-Sheet_7: 6534953839313723954
+      Galaxy Coin1-Sheet_1: -667118481146115118
+      Galaxy Coin1-Sheet_8: 3829568608099266987
+      Galaxy Coin1-Sheet_2: -1688817453365295833
+      Galaxy Coin1-Sheet_9: 6093837472083756810
+      Galaxy Coin1-Sheet_0: 6985058507149642151
+      Galaxy Coin1-Sheet_6: 8105080772577620018
+      Galaxy Coin1-Sheet_5: -3033846478833411623
+      Galaxy Coin1-Sheet_4: -3852647697454778518
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

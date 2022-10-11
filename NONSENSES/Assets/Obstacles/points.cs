@@ -33,8 +33,8 @@ public class points : MonoBehaviour
     private void FixedUpdate()
     {
         speed = gameManager.speedOfObstacle;
-        if (!gameManager.pause)
-        {
+        
+        
             if (FakeParent == null)
             {
                 transform.position += Vector3.down * speed * Time.deltaTime;
@@ -47,8 +47,8 @@ public class points : MonoBehaviour
                 targetPos = new Vector3(transform.position.x, targetPos.y, transform.position.z);
                 transform.position = targetPos; //RotatePointAroundPivot(targetPos, FakeParent.position, targetRot);
                // transform.localRotation = targetRot;
-            }
-        }
+           }
+        
         if (transform.position.y < -10f || FakeParent == null)
         {
 
@@ -76,8 +76,9 @@ public class points : MonoBehaviour
         //Debug.Log("colision :"+collision.gameObject.name+"with :"+gameObject.name);
         if (collision.gameObject.tag == "Player")
         {
-            FindObjectOfType<AudioManager>().Play("Point");
+            
             gameManager.AddPoint(1);
+            FindObjectOfType<AudioManager>().Play("Coin");
             gameManager.stage.DestroyPoint(gameObject);
         }
 

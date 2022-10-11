@@ -18,10 +18,13 @@ public class GameManager : MonoBehaviour
     public Boolean pause;
     public Text debuger;
     public Text pointsUI;
+    public float maxSpeed;
     //lista przechowuj¹ca przeszkody by móc je kontrolowaæ 
-    public Leaderboard leaderboard;
-    private float speedOfObstacleStart;
+    public bool ADLoaded;
 
+    public Leaderboard leaderboard;
+    public bool DoPlayerGotNewLife;
+    private float speedOfObstacleStart;
 
 
     void Start()
@@ -40,6 +43,7 @@ public class GameManager : MonoBehaviour
 
         pointsUI.text = points.ToString();
 
+        DoPlayerGotNewLife = false;
 
     }
     void Update()
@@ -49,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     void BackMenu()
     {
-        PlayerPrefs.DeleteAll();
+      //  PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Menu");
     }
 
@@ -57,11 +61,29 @@ public class GameManager : MonoBehaviour
     //koniec gry
     public void EndGame()
     {
-        leaderboard.DoLeadreboardPost(points);
+        
         player.GetComponent<PlayerScript>().Destroy();
-        debuger.text = "GAME OVER";
-        PauseGameHalf();
-        Invoke("ShowMenu", 0.3f);
+
+        if (!DoPlayerGotNewLife && ADLoaded == true)
+            // Invoke("ShowNewLifeMenu", 0.3f);
+            ShowNewLifeMenu();
+        else
+        {
+            // Invoke("ShowGameOverMenu", 0.5f);
+            ShowGameOverMenu();
+        }
+    }
+    public void UploadLeaderboard()
+    {
+        leaderboard.DoLeadreboardPost(points);
+    }
+    void ShowNewLifeMenu()
+    {
+        menuManager.OpenNewLifeMenu();
+    }
+    void ShowGameOverMenu()
+    {
+        menuManager.OpenGameOverMenu();
     }
     //dodanie punktu zostaje tutaj
     public void AddPoint(int value)
@@ -71,6 +93,22 @@ public class GameManager : MonoBehaviour
         speedOfObstacle = speedOfObstacleStart + points * 0.1f;
     }
 
+    void AddSpeed()
+    {
+        if(speedOfObstacle < maxSpeed)
+        speedOfObstacle = speedOfObstacleStart + points * 0.1f;
+    }
+
+    public void SaveHighScore()
+    {
+        if (!PlayerPrefs.HasKey("highscore"))
+        {
+            PlayerPrefs.SetInt("highscore", points);
+            return;
+        }
+        if(points>PlayerPrefs.GetInt("highscore"))
+        PlayerPrefs.SetInt("highscore", points);
+    }
 
     public void ChangeStatusOfPauseGame(bool _halfPause)
     {
@@ -96,6 +134,7 @@ public class GameManager : MonoBehaviour
     public void NewLive()
     {
         Debug.Log("gracz dostal nowe zycie");
+        DoPlayerGotNewLife = true;
         menuManager.CloseNewLifeMenu();
         player.GetComponent<PlayerScript>().NewLive();
 

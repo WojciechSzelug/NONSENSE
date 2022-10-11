@@ -46,19 +46,36 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 26364aaf1f64b40c1a047b0bacfbd10e, type: 3}
+    output: {fileID: 0}
     volume: 0.508
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Point
     clip: {fileID: 8300000, guid: a446fc3f5b0e6403799cfa0111e8fe3b, type: 3}
+    output: {fileID: 0}
     volume: 0.704
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Buttom
     clip: {fileID: 8300000, guid: 9e7d29224fe414cb2b9a1a824c36e0bc, type: 3}
-    volume: 0.718
+    output: {fileID: 0}
+    volume: 0.408
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Coin
+    clip: {fileID: 8300000, guid: ba39bf8baf6d13046889b2d64822381a, type: 3}
+    output: {fileID: 0}
+    volume: 0.408
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+    output: {fileID: 0}
+    volume: 0.512
     pitch: 1
     loop: 0
     source: {fileID: 0}

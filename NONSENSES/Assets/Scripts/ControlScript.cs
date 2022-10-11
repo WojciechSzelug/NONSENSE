@@ -22,14 +22,18 @@ public class ControlScript : MonoBehaviour
         
 
     }
+
+
     void FixedUpdate()
     {
         if (!gameManager.pause)
         {
-            if (Input.touchCount == 0)
+
+            KeyboardMove();
+            if (Input.touchCount == 0 && Input.GetAxis("Horizontal") == 0)
             {
                 // if no touch just reset
-
+                
                 MoveForward();
                 
             }
@@ -39,60 +43,74 @@ public class ControlScript : MonoBehaviour
                 Touch _touch = Input.GetTouch(0);
                 Vector3 touchPosition = Camera.main.ScreenToWorldPoint(_touch.position);
                 Vector3 direction = touchPosition - transform.position;
-                if (direction.x < -0.1)
+
+       
+                if (direction.x < -0.4)
                 {
                     MoveLeft();
-                    
+                   
                 }
-                else if (direction.x > 0.1)
+                else if (direction.x > 0.4)
                 {
                     MoveRight();
                     
                 }
                 else
                 {
+                    
                     MoveForward();
                 }
+                
 
-                animator.SetFloat("Speed",Mathf.Abs( rigidbody2D.velocity.x));
-                if (rigidbody2D.velocity.x <= 0) 
-                {
-                    sprite.flipX = false;
-                }
-                else
-                {
-                    sprite.flipX = true;
-                }
                 //transform.position = new Vector2(Mathf.Lerp(transform.position.x, touchPosition.x, moveSpeed), transform.position.y);
 
             }
+            else if (Input.touchCount == 2)
+            {
+                MoveForward();
+               
 
+            }
         }
-        else if (Input.touchCount == 2)
-        {
-            MoveForward();
-            print("Move forward");
-        }
+    
 
+        // animator.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
+      
+        animator.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
     }
 
+    void KeyboardMove()
+    {
+        if (Input.GetAxisRaw("Horizontal") >0)
+        {
+            MoveRight();
+
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            MoveLeft();
+            
+        }
+    }
     public void MoveLeft()
     {
-        rigidbody2D.velocity = new Vector2(-1 * velocityOfPlayer * Time.deltaTime,0);
+        rigidbody2D.velocity = new Vector2(-1 * velocityOfPlayer,0);
+        sprite.flipX = false;
         
-        
-
+       
     }
     public void MoveRight()
     {
-        rigidbody2D.velocity = new Vector2(1 * velocityOfPlayer * Time.deltaTime, 0);
-       
+        rigidbody2D.velocity = new Vector2(1 * velocityOfPlayer, 0);
+        sprite.flipX = true;
+        
         
     }
     public void MoveForward()
     {
         rigidbody2D.velocity = new Vector2(0, 0);
         
+       
     }
 
 }

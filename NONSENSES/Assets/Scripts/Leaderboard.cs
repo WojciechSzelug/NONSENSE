@@ -6,10 +6,11 @@ using GooglePlayGames;
 
 public class Leaderboard : MonoBehaviour
 {
-
+    
     public void ShowLeaderboardUI()
     {
         Social.ShowLeaderboardUI();
+       
     }
 
     public void DoLeadreboardPost(int _score)
@@ -23,7 +24,27 @@ public class Leaderboard : MonoBehaviour
                 }
                 else
                 {
-                    //co siê dzieje jeœli nie sukces
+                    //
+                }
+
+            });
+    }
+    public void DoLeadreboardPull()
+    {
+        Social.LoadScores(GPGSIds.leaderboard_highest_leaderboard,
+            scores =>
+            {
+                if (scores.Length > 0)
+                {
+                    //scores.
+                    string myScores = "Leaderboard:\n";
+                    foreach (IScore score in scores)
+                        myScores += "\t" + score.userID + " " + score.formattedValue + " " + score.date + "\n";
+                    Debug.Log(myScores);
+                }
+                else
+                {
+                    Debug.Log("No scores loaded");
                 }
 
             });

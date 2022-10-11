@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject options;
+    public GameObject credits;
     public Leaderboard leaderboard;
     private void Start()
     {
         leaderboard = GetComponent<Leaderboard>();
+        options.SetActive(false);
+        gameObject.SetActive(true);
+        credits.SetActive(false);  
     }
     void Update()
     {
@@ -20,7 +24,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         FindObjectOfType<AudioManager>().Play("Buttom");
-        PlayerPrefs.DeleteAll();
+      //  PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Game");
     }
     public void OpitonsGame()
@@ -38,6 +42,7 @@ public class MainMenu : MonoBehaviour
     public void ShowLeaderboard()
     {
         FindObjectOfType<AudioManager>().Play("Buttom");
+
         leaderboard.ShowLeaderboardUI();
     }
 }

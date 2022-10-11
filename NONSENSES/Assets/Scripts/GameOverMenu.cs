@@ -11,7 +11,7 @@ public class GameOverMenu : MonoBehaviour
     public void ExitGame()
     {
         FindObjectOfType<AudioManager>().Play("Buttom");
-        PlayerPrefs.DeleteAll();
+      //  PlayerPrefs.DeleteAll();
         
             SceneManager.LoadScene("Menu");
 
@@ -25,7 +25,7 @@ public class GameOverMenu : MonoBehaviour
     public void Retry()
     {
         FindObjectOfType<AudioManager>().Play("Buttom");
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Game");
         FindObjectOfType<AudioManager>().VolumeReset("Theme");
     }

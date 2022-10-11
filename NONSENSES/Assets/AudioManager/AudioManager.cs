@@ -51,7 +51,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found");
             return;
         }
-        s.source.volume = s.source.volume*procent/100;
+        s.source.volume = procent/100;
     }
     public void VolumeReset(string name)
     {
@@ -93,5 +93,27 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.UnPause();
+    }
+    public void Mute(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found");
+            return;
+        }
+
+         s.source.mute = true;
+    }
+    public void UnMute(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found");
+            return;
+        }
+        
+        s.source.mute = false;
     }
 }

@@ -33,6 +33,9 @@ public class GPGSManager : MonoBehaviour
         {
             //Call Unity Authentication SDK to sign in or link with Google Play Games
             debugInfo.text = ("Login with Google Play games successful. Authorization code: " + authCode);
+            Leaderboard leaderboard = new Leaderboard();
+            if (PlayerPrefs.HasKey("highscore"))
+            leaderboard.DoLeadreboardPost(PlayerPrefs.GetInt("highscore"));
         }
         else
         {

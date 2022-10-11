@@ -21,10 +21,12 @@
 /// Resources.
 ///
 
-
-public static class GPGSIds
+namespace GPS
 {
+    public static class GPGSIds
+    {
         public const string leaderboard_highest_leaderboard = "CgkIteHVo_0FEAIQAA"; // <GPGSID>
 
+    }
 }
 

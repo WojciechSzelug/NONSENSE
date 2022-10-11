@@ -74,10 +74,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -116,6 +118,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -544,9 +547,27 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Asteroid2-Sheet_12: -2040343065530529614
+      Asteroid2-Sheet_6: 5217781873176507976
+      Asteroid2-Sheet_9: 4758684176032980178
+      Asteroid2-Sheet_14: 2439450700806815167
+      Asteroid2-Sheet_5: -3496898618659688208
+      Asteroid2-Sheet_15: 4064483941111061435
+      Asteroid2-Sheet_0: 4057288007230980444
+      Asteroid2-Sheet_11: 5468922613218157421
+      Asteroid2-Sheet_16: 4793058621260629745
+      Asteroid2-Sheet_3: 9123259531229652931
+      Asteroid2-Sheet_13: -1631351659236168920
+      Asteroid2-Sheet_4: 1001125016158481721
+      Asteroid2-Sheet_7: -5719744430537425587
+      Asteroid2-Sheet_10: -7167182811440867950
+      Asteroid2-Sheet_2: 2938874778171009477
+      Asteroid2-Sheet_17: 8798218396529611818
+      Asteroid2-Sheet_1: -2681496973202841262
+      Asteroid2-Sheet_8: 9168636119809829429
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
